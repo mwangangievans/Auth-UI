@@ -1,0 +1,219 @@
+<div class="flex-1 flex flex-col min-h-full">
+    <a href="#main-content" type="button" tabindex="0"
+        class="absolute z-[100] opacity-0 -left-[999px] focus:-left-[0px] focus:opacity-100 inline-block rounded-none bg-white px-5 py-2.5 text-sm font-medium text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+        Skip to main content
+    </a>
+    <header id="e" phx-update="ignore" class="border-b border-gray-200" x-data="{headerOpen: false}"
+        x-on:click.away="headerOpen = false">
+        <nav class="mx-auto flex max-w-screen-2xl items-center justify-between gap-x-6 py-4 px-6 sm:px-8 lg:py-5"
+            aria-label="Global">
+            <div class="flex items-center overflow-hidden w-full">
+                <a href="/en/" data-phx-link="redirect" data-phx-link-state="push"
+                    class="flex-none flex-shrink-0 block p-1 rounded-lg focus:ring-2 focus:outline-none"
+                    title="Go to the homepage">
+                    <span class="sr-only">KimiPay</span>
+                    <img class="hidden xs:block w-auto h-8 2xs:h-12 xl:h-14" src="/assets/kimi-pay_no_bg.png"
+                        alt="eCitizen logo">
+                    <img class="block xs:hidden w-auto h-8 2xs:h-12 xl:h-14" src="/assets/kimi-pay_no_bg.png"
+                        alt="KimiPay logo">
+                </a>
+
+               
+            </div>
+
+            <!-- user nav -->
+
+        </nav>
+        <!-- Mobile menu, show/hide based on menu open state. -->
+        <div x-show="headerOpen" class="block lg:hidden" role="dialog" aria-modal="true" style="display: none;">
+            <!-- Background backdrop, show/hide based on slide-over state. -->
+            <div class="fixed inset-0 z-30 bg-gray-50/10 backdrop-blur-sm backdrop-filter"></div>
+            <div
+                class="fixed inset-y-0 right-0 z-30 w-full overflow-y-auto bg-white py-4 px-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+                <div class="flex items-center gap-x-6">
+                    <a href="/en/profile/documents/national-id" data-phx-link="redirect" data-phx-link-state="push"
+                        title="View your profile">
+                        <img class="mx-auto w-auto h-8 " src="/en/images/logo.svg" alt="logo">
+                    </a>
+                    <button x-on:click="headerOpen = false" type="button"
+                        class="ml-auto -m-2.5 rounded-md p-2.5 text-gray-700" aria-label="Close mobile menu">
+                        <span class="sr-only">Close mobile menu</span>
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                            aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="mt-6 flow-root">
+                    <div class="mb-6 divide-y divide-gray-500/10">
+                        <div class="space-y-1 py-2.5">
+                            <a href="/en/" data-phx-link="redirect" data-phx-link-state="push"
+                                class="-mx-3 block rounded-lg py-1.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                                title="Navigate to the homepage">
+                                Home
+                            </a>
+
+                            <a href="/en/ministries" data-phx-link="redirect" data-phx-link-state="push"
+                                class="-mx-3 block rounded-lg py-1.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                                title="View all National Ministries">
+                                National
+                            </a>
+
+                            <a href="/en/counties" data-phx-link="redirect" data-phx-link-state="push"
+                                class="-mx-3 block rounded-lg py-1.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                                title="View all Counties">
+                                County
+                            </a>
+
+                            <a href="/en/help-and-support" data-phx-link="redirect" data-phx-link-state="push"
+                                class="-mx-3 whitespace-nowrap block rounded-lg py-1.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                                title="View Support Details and FAQs">
+                                Help &amp; Support
+                            </a>
+                            <div class="pt-4 pb-3 border-t border-gray-200">
+                                <div class="flex space-x-4 items-center justify-start sm:mt-0">
+                                    <a href="/en/login" data-phx-link="redirect" data-phx-link-state="push"
+                                        class="block w-full text-center rounded-3xl whitespace-nowrap border border-gray-200 bg-white py-2 px-4 font-medium text-gray-800 shadow-sm hover:bg-gray-200 focus:outline-none">
+                                        Sign in
+                                    </a>
+                                    <a href="/en/register" data-phx-link="redirect" data-phx-link-state="push"
+                                        class="block w-full text-center rounded-3xl whitespace-nowrap border border-transparent bg-accentcolor-700 py-2 px-4 font-medium text-white shadow-sm hover:bg-accentcolor-800 focus:outline-none">
+                                        Register
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-1 py-2.5">
+                            <a title="Switcher" href="/get-business?business=0"
+                                class="-mx-3 rounded-lg flex items-center justify-between py-1.5 px-3 text-base font-semibold leading-7 text-gray-900 capitalize bg-[#F0F6FF]">
+                                Individual
+                                <svg class="flex-shrrink-0 -mr-0.5 h-5 w-5" viewBox="0 0 20 20" fill="#0047BA"
+                                    aria-hidden="true">
+                                    <path fill-rule="evenodd"
+                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </a>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+    <main class="flex-1 flex flex-col min-h-full w-full " id="main-content" phx-hook="accessibility">
+
+
+        <div class="flex-1 min-h-full sm:flex sm:flex-col sm:justify-start sm:items-center">
+            <div class="p-4 max-w-sm mx-auto w-full sm:p-0 mt-20">
+                <!-- header -->
+                <div class="text-center">
+                    <h1 class="text-xl text-titlecolor-800 font-semibold lg:text-4xl">
+                        OTP Verification
+                    </h1>
+                    <p class="text-base text-gray-600 font-normal">All KimiPay Services</p>
+                </div>
+
+                <div class="mt-8">
+                    <div class="flex-1 min-h-full w-full sm:flex sm:flex-col sm:justify-start sm:items-center">
+                        <fieldset>
+                            <div class="flex items-center justify-between">
+                                <p class="text-base text-gray-600 font-normal text-center">
+                                    Select where you would like to receive a verification code
+                                </p>
+                            </div>
+                            <div class="mt-4 grid grid-cols-1 gap-y-6">
+                                <a id="otp_email_channel" href="javascript: void(0)" phx-click="send_otp"
+                                    phx-value-channel="email">
+                                    <div
+                                        class="border-gray-300 relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm hover:border-primary_color focus:outline-none">
+                                        <span class="flex items-center flex-1">
+                                            <span class="flex-shrink-0">
+                                                <svg class="h-10 w-10" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 40 40">
+                                                    <rect width="40" height="40" fill="#EDFDF3" rx="20"></rect>
+                                                    <path stroke="#14B04C" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-width="1.667"
+                                                        d="m11.666 15.833 6.805 4.763c.55.386.826.578 1.126.653.264.066.541.066.806 0 .3-.075.575-.267 1.126-.653l6.804-4.763M15.667 26.666h8.666c1.4 0 2.1 0 2.635-.272a2.5 2.5 0 0 0 1.093-1.093c.272-.534.272-1.234.272-2.635v-5.333c0-1.4 0-2.1-.272-2.635a2.5 2.5 0 0 0-1.093-1.093c-.535-.272-1.235-.272-2.635-.272h-8.666c-1.4 0-2.1 0-2.636.272a2.5 2.5 0 0 0-1.092 1.093c-.273.535-.273 1.235-.273 2.635v5.333c0 1.4 0 2.1.273 2.635a2.5 2.5 0 0 0 1.092 1.093c.535.272 1.235.272 2.635.272Z">
+                                                    </path>
+                                                </svg>
+                                            </span>
+                                            <span class="ml-3 flex flex-col">
+                                                <span class="block font-medium text-sm sm:text-base text-gray-700">
+                                                    Send code to my email
+                                                </span>
+                                                <span class="mt-1 flex items-center text-sm text-gray-600">
+                                                    m*********2gmail.com
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <svg class="hidden h-5 w-5 text-accentcolor-700" viewBox="0 0 20 20"
+                                            fill="currentColor" aria-hidden="true">
+                                            <path fill-rule="evenodd"
+                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                                                clip-rule="evenodd"></path>
+                                        </svg>
+                                        <span
+                                            class="border-transparent pointer-events-none absolute -inset-px rounded-lg border-2"
+                                            aria-hidden="true">
+                                        </span>
+                                    </div>
+                                </a>
+
+                                <a id="otp_mobile_number_channel" href="javascript: void(0)" phx-click="send_otp"
+                                    phx-value-channel="msisdn">
+                                    <div
+                                        class="border-gray-300  relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm hover:border-primary_color focus:outline-none">
+                                        <span class="flex items-center flex-1">
+                                            <span class="flex-shrink-0">
+                                                <svg class="h-10 w-10" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 40 40">
+                                                    <rect width="40" height="40" fill="#EDFDF3" rx="20"></rect>
+                                                    <path stroke="#14B04C" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-width="1.667"
+                                                        d="M16.984 17.378c.58 1.208 1.37 2.34 2.371 3.341a12.17 12.17 0 0 0 3.342 2.372c.104.05.156.075.222.094a.87.87 0 0 0 .718-.122c.056-.04.103-.088.199-.183.29-.291.437-.437.583-.532a1.667 1.667 0 0 1 1.817 0c.146.095.292.24.584.532l.162.162c.443.443.664.665.785.903a1.667 1.667 0 0 1 0 1.504c-.12.238-.342.46-.785.902l-.131.132c-.442.44-.662.662-.962.83-.333.187-.85.322-1.232.32-.344 0-.58-.067-1.05-.2a15.866 15.866 0 0 1-6.903-4.062 15.866 15.866 0 0 1-4.061-6.903c-.134-.47-.2-.706-.202-1.05a2.814 2.814 0 0 1 .32-1.232c.17-.3.39-.52.831-.962l.132-.131c.443-.443.664-.664.902-.785a1.667 1.667 0 0 1 1.504 0c.238.12.46.342.902.785l.163.162c.291.292.437.437.532.584.36.552.36 1.264 0 1.817-.095.146-.24.292-.532.583-.095.095-.143.143-.183.199a.872.872 0 0 0-.122.718c.019.066.044.118.094.222Z">
+                                                    </path>
+                                                </svg>
+                                            </span>
+                                            <span class="ml-3 flex flex-col">
+                                                <span class="block font-medium text-sm sm:text-base text-gray-700">
+                                                    Send code to my phone
+                                                </span>
+                                                <span class="mt-1 flex items-center text-sm text-gray-600">
+                                                    +254******410
+                                                </span>
+                                            </span>
+                                        </span>
+                                        <span
+                                            class="border-transparent pointer-events-none absolute -inset-px rounded-lg border-2"
+                                            aria-hidden="true">
+                                        </span>
+                                    </div>
+                                </a>
+
+
+                            </div>
+                            <div class="mt-6">
+                                <p class="text-sm text-gray-600">
+                                    <button  type="button" 
+                                        class="btn w-full px-6 rounded-full btn-outline">
+                                        Back
+                                    </button>
+                                </p>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+</div>
