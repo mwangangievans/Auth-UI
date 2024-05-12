@@ -217,7 +217,7 @@
                                         <div class="px-4 py-4 sm:px-6">
                                             <p>
                                                 Not your profile?
-                                                <button 
+                                                <button (click)="updateActiveTab(1)"
                                                     class="font-medium text-linkColor hover:text-linkColor ml-2"
                                                     aria-label="Account details found of Full name ESTHER MUTAVE KALELI and Id number 41238546, if not your profile, click try again">
                                                     Try again
@@ -600,11 +600,11 @@
 
                         <div class="flex justify-end">
                             <div class="flex space-x-2">
-                                <a href="/en/register/citizen/validate-id" class="btn px-8 btn-outline rounded-full"
+                                <a  (click)="updateActiveTab(5)" class="btn px-8 btn-outline rounded-full"
                                     title="Navigate to the next section">
                                     Back
                                 </a>
-                                <button type="submit" class="btn px-8 rounded-full btn_primary">
+                                <button href="/login" class="btn px-8 rounded-full btn_primary">
                                     Complete
                                 </button>
                             </div>
@@ -612,7 +612,7 @@
 
                     </form>
                     <!-- modal -->
-                    <div class="relative z-10" x-data="{modal: false}" x-on:click.away="modal = false" x-show="modal"
+                    <!-- <div class="relative z-10" x-data="{modal: false}" x-on:click.away="modal = false" x-show="modal"
                         x-on:modal-overlay.window="if ($event.detail.id == 'photo-req') modal = true"
                         style="display: none;">
                         <div x-transition:enter="ease-in-out duration-500" x-transition:enter-start="opacity-0"
@@ -708,7 +708,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
