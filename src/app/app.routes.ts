@@ -4,6 +4,7 @@ import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { OtpComponent } from './otp/otp.component';
 import { VerifyComponent } from './verify/verify.component';
+import { RegisterFormComponent } from './register-form/register-form.component';
 
 
 export const routes: Routes = [
@@ -12,6 +13,8 @@ export const routes: Routes = [
     {path: "forget-password", component: ForgotPasswordComponent},
     {path: "otp", component: OtpComponent},
     {path: "otp-verify", component: VerifyComponent},
+    {path: "register-form", component: RegisterFormComponent},
+
     {
         path: "**", redirectTo: 'login'
       }

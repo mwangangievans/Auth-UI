@@ -5,14 +5,13 @@ import { ForgotPasswordComponent } from "./forgot-password/forgot-password.compo
 import { RegisterComponent } from "./register/register.component";
 import { VerifyComponent } from "./verify/verify.component";
 import { OtpComponent } from "./otp/otp.component";
-import { RegisterFormComponent } from "./register-form/register-form.component";
 
 @Component({
     selector: 'app-root',
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    imports: [RouterOutlet, LoginComponent, ForgotPasswordComponent, RegisterComponent, VerifyComponent, OtpComponent, RegisterFormComponent]
+    imports: [RouterOutlet, LoginComponent, ForgotPasswordComponent, RegisterComponent, VerifyComponent, OtpComponent]
 })
 export class AppComponent {
   title = 'AUTH';
