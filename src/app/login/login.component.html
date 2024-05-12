@@ -35,7 +35,7 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
                                         email</label>
                                     <input type="email" id="email"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary_color focus:border-primary_color block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary_color dark:focus:border-primary_color"
                                         placeholder="" required />
                                 </div>
                                 <div class="mb-5">
@@ -43,22 +43,22 @@
                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
                                         password</label>
                                     <input type="password" id="password"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary_color focus:border-primary_color block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary_color dark:focus:border-primary_color"
                                         required />
                                 </div>
                               
 
                                 <div class="md:flex justify-between">
                                     <div class="flex items-center justify-center 2xs:justify-start py-2 2xs:py-0">
-                                        <input id="push-email" name="push-notifications" type="checkbox"  class="h-4 w-4 rounded border-gray-300 text-emerald-600 focus:ring-emerald-500" />
+                                        <input id="push-email" name="push-notifications" type="checkbox"  class="h-4 w-4 rounded border-gray-300 text-primary_color focus:ring-pritext-primary_color" />
                                         <label for="push-email" class="ml-3">
                                             <span class="block text-sm font-medium text-gray-600">
                                                 Remember for 30 days
                                             </span>
                                         </label>
                                     </div>
-                                    <div   class="py-2 2xs:py-0 text-center 2xs:text-left cursor-pointer">
-                                        <a  routerLink="forget-password" class="text-sm text-linkColor font-semibold hover:underline" title="Navigate to password reset page">
+                                    <div     class="py-2 2xs:py-0 text-center 2xs:text-left cursor-pointer">
+                                        <a href="forget-password"  class="text-sm text-linkColor font-semibold hover:underline" title="Navigate to password reset page">
                                             Forgot Password
                                         </a>
                                     </div>
@@ -107,7 +107,7 @@
                 <div class="block 2xl:hidden my-6">
                     <p class="text-sm text-center text-gray-600">
                         Don’t have an account?
-                        <a  routerLink="forget-password"
+                        <a  href="/register" 
                             class="ml-1 text-linkColor font-semibold hover:underline cursor-pointer"
                             title="Navigate to sign up page">
                             Sign up
@@ -118,7 +118,7 @@
                 <div class="hidden 2xl:block absolute bottom-0 left-0 ml-3 mb-4">
                     <p class="text-sm text-center text-gray-600">
                         Don’t have an account?
-                        <a  data-phx-link="redirect" data-phx-link-state="push"
+                        <a  href="/register"   data-phx-link="redirect" data-phx-link-state="push"
                             class="ml-1 text-linkColor font-semibold hover:underline cursor-pointer">
                             Sign up
                         </a>

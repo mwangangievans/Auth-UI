@@ -38,9 +38,9 @@ module.exports = {
       // }),
       colors: {
         //#14B04C
-        'primary_color': '#14b04c',
+        'primary_color': '#339BD6',
         'linkColor': '#0057e3',
-        'lightGreen': '#ecfdf3',
+        'lightGreen': '#E0EDF3',
         
       },
       fontWeight: {
