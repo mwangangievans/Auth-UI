@@ -26,7 +26,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   providers: [ApiService],
 })
 export class RegisterFormComponent {
-  activetab: 1 | 2 | 3 | 4 | 5 | 6 | 7 = 2;
+  activetab: 1 | 2 | 3 | 4 | 5 | 6 | 7 = 1;
   registerForm!: FormGroup;
   submitted!: boolean;
   showPassword!: boolean;
