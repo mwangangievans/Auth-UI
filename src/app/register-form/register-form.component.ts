@@ -11,6 +11,7 @@ import { NotificationService } from '../notification.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoaderComponent } from '../loader/loader.component';
+import { userregistrationResponse } from '../model';
 
 @Component({
   selector: 'app-register-form',
