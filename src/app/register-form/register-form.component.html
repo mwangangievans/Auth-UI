@@ -167,9 +167,13 @@
                                             <path fill-rule="evenodd"
                                                 d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-5a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0v-4.5A.75.75 0 0110 5zm0 10a1 1 0 100-2 1 1 0 000 2z"
                                                 clip-rule="evenodd"></path>
+
                                         </svg>
                                         <span *ngIf="submitted && f['phone_number'].errors['required']">can't be
                                             blank</span>
+                                        <span
+                                            *ngIf="submitted && (f['phone_number'].errors['invalidKenyanPhoneNumber'] && !f['phone_number'].errors['required'])">enter
+                                            valid number</span>
 
                                     </p>
                                 </div>
@@ -270,10 +274,9 @@
                                 Select where you would like to receive a verification code
                             </p>
                         </div>
-                        <div class="mt-4 grid grid-cols-1 gap-y-6">
-                            <a id="otp_email_channel" href="javascript: void(0)" phx-click="send_otp"
-                                phx-value-channel="email">
-                                <div
+                        <div class="mt-4 grid grid-cols-1 gap-y-6 ">
+                            <a>
+                                <div (click)="sentOtp('EMAIL',3)"
                                     class="border-gray-300 relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm hover:border-primary_color focus:outline-none">
                                     <span class="flex items-center flex-1">
                                         <span class="flex-shrink-0">
@@ -286,7 +289,7 @@
                                                 </path>
                                             </svg>
                                         </span>
-                                        <span class="ml-3 flex flex-col">
+                                        <span class="ml-3 flex flex-col  md:ml-8">
                                             <span class="block font-medium text-sm sm:text-base text-gray-700">
                                                 Send code to my email
                                             </span>
@@ -300,9 +303,9 @@
                                 </div>
                             </a>
 
-                            <a id="otp_mobile_number_channel" href="javascript: void(0)" phx-click="send_otp"
-                                phx-value-channel="msisdn">
-                                <div
+
+                            <a>
+                                <div (click)="sentOtp('PHONE_NUMBER',3)"
                                     class="border-gray-300  relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm hover:border-primary_color focus:outline-none">
                                     <span class="flex items-center flex-1">
                                         <span class="flex-shrink-0">
@@ -315,7 +318,7 @@
                                                 </path>
                                             </svg>
                                         </span>
-                                        <span class="ml-3 flex flex-col">
+                                        <span class="ml-3 flex flex-col  md:ml-8">
                                             <span class="block font-medium text-sm sm:text-base text-gray-700">
                                                 Send code to my phone
                                             </span>

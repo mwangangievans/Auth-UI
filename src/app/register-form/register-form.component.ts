@@ -10,20 +10,23 @@ import {
 import { NotificationService } from '../notification.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoaderComponent } from '../loader/loader.component';
+import { userregistrationResponse } from '../model';
 
 @Component({
   selector: 'app-register-form',
   standalone: true,
   templateUrl: './register-form.component.html',
   styleUrl: './register-form.component.css',
+  providers: [ApiService],
   imports: [
     NgIf,
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
     CommonModule,
+    LoaderComponent,
   ],
-  providers: [ApiService],
 })
 export class RegisterFormComponent {
   activetab: 1 | 2 | 3 | 4 | 5 | 6 | 7 = 1;
@@ -31,6 +34,7 @@ export class RegisterFormComponent {
   submitted!: boolean;
   showPassword!: boolean;
   isDialogOpen!: boolean;
+  registrationresponse!: userregistrationResponse;
 
   updateActiveTab(position: 1 | 2 | 3 | 4 | 5 | 6) {
     this.activetab = position;
@@ -45,7 +49,10 @@ export class RegisterFormComponent {
   ngOnInit() {
     this.registerForm = this._formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      phone_number: ['', Validators.required],
+      phone_number: [
+        '',
+        [Validators.required, this._api.kenyanPhoneNumberValidator()],
+      ],
       fullname: ['', Validators.required],
       password: ['', Validators.required],
     });
@@ -59,9 +66,8 @@ export class RegisterFormComponent {
         .subscribe({
           next: (data: any) => {
             if (data) {
-              console.log('response....', data);
-
-              this.notify.showSuccess(`${data.error?.detail}`, `Success`);
+              this.registrationresponse = data;
+              this.notify.showSuccess(`${data.message}`, `Success`);
               this.activetab = position;
             }
           },
@@ -77,6 +83,34 @@ export class RegisterFormComponent {
 
   get f(): { [key: string]: AbstractControl } {
     return this._api.getFormControls(this.registerForm);
+  }
+
+  sentOtp(context: string, position: 1 | 2 | 3) {
+    console.log({ context });
+    console.log('form.....', this.registerForm);
+
+    let payload = {
+      username: this.registrationresponse.username,
+      context: 'REGISTRATION',
+      channel: context,
+    };
+
+    if (this.registerForm.valid) {
+      this._api.post('authentication/send-code', payload).subscribe({
+        next: (data: any) => {
+          if (data) {
+            console.log('response....', data);
+            this.notify.showSuccess(`${data.message}`, `Success`);
+          }
+        },
+        error: (error) => {
+          this._api.loopErrorMessages(error.error);
+        },
+        complete: () => {},
+      });
+    } else {
+      console.log('else block.....');
+    }
   }
 
   resentOtp(position: 1 | 2 | 3 | 4 | 5 | 6 | 7) {
