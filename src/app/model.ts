@@ -4,3 +4,10 @@ interface userRegisterPayloadI {
   fullname: string;
   password: string;
 }
+
+interface userregistrationResponse {
+  message: [string];
+  username: string;
+  phone_number: string;
+  email: string;
+}

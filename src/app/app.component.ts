@@ -6,6 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import { VerifyComponent } from './verify/verify.component';
 import { OtpComponent } from './otp/otp.component';
 import { CommonModule } from '@angular/common';
+import { LoaderComponent } from './loader/loader.component';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,7 @@ import { CommonModule } from '@angular/common';
     RegisterComponent,
     VerifyComponent,
     OtpComponent,
+    LoaderComponent,
   ],
 })
 export class AppComponent {

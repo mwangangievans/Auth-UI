@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AbstractControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormGroup, ValidatorFn } from '@angular/forms';
 import { NotificationService } from './notification.service';
 
 const baseUrl = 'http://api-auth.kimipay.com/';
@@ -44,5 +44,17 @@ export class ApiService {
         this.notify.showError(`${error[key]}`, `Errro`);
       }
     }
+  }
+  kenyanPhoneNumberValidator(): ValidatorFn {
+    // Regular expression for Kenyan phone numbers
+
+    const KENYA_PHONE_REGEX = /^(\+?254|0)?[7][0-9]{8}$/;
+
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const valid = KENYA_PHONE_REGEX.test(control.value);
+      return valid
+        ? null
+        : { invalidKenyanPhoneNumber: { value: control.value } };
+    };
   }
 }
