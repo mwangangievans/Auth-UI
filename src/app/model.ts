@@ -11,3 +11,10 @@ export interface userregistrationResponse {
   phone_number: string;
   email: string;
 }
+
+export interface userLoginResponse {
+  message: [string];
+  username: string;
+  phone_number: string;
+  email: string;
+}

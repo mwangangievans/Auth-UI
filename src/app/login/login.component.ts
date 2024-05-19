@@ -11,6 +11,8 @@ import {
 import { ApiService } from '../api.service';
 import { NotificationService } from '../notification.service';
 import { HttpClientModule } from '@angular/common/http';
+import { userLoginResponse } from '../model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -28,13 +30,19 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class LoginComponent {
   loginForm!: FormGroup;
+  veryOtpForm!: FormGroup;
   submitted!: Boolean;
+  submitted1!: Boolean;
+
   showPassword!: Boolean;
+  loginresponse!: userLoginResponse;
+  activetab: 1 | 2 | 3 | 4 | 5 | 6 | 7 = 1;
 
   constructor(
     private _api: ApiService,
     private _formBuilder: FormBuilder,
-    private notify: NotificationService
+    private notify: NotificationService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -43,30 +51,26 @@ export class LoginComponent {
       password: ['', Validators.required],
       client_id: '4884zoy02fxoo9jibgv3qgzb03d1sny2ml5aezt1cuhno9ttlz',
     });
+
+    this.veryOtpForm = this._formBuilder.group({
+      code: ['', Validators.required],
+      context: 'LOGIN',
+    });
   }
 
   login(position: 1 | 2 | 3 | 4 | 5 | 6 | 7) {
-    // {
-    //   "client_id": "string",
-    //   "username": "string",
-    //   "password": "string"
-    // }
-
     this.submitted = true;
     if (this.loginForm.valid) {
       this._api.post('authentication/login', this.loginForm.value).subscribe({
         next: (data: any) => {
           if (data) {
+            this.loginresponse = data;
             this.notify.showSuccess(`${data.message}`, `Success`);
             this.activetab = position;
           }
         },
         error: (error) => {
-          for (let key in error) {
-            if (error.hasOwnProperty(key)) {
-              this.notify.showError(`${error[key]}`, `Errro`);
-            }
-          }
+          this._api.loopErrorMessages(error.error);
         },
         complete: () => {},
       });
@@ -74,11 +78,55 @@ export class LoginComponent {
       return;
     }
   }
+  veryOtp(position: 1 | 2 | 3 | 4 | 5 | 6 | 7) {
+    this.submitted1 = true;
+    if (this.loginForm.valid) {
+      this._api
+        .post('authentication/verify-code', this.veryOtpForm.value)
+        .subscribe({
+          next: (data: any) => {
+            if (data) {
+              console.log('otp verify.....', data);
 
-  resentOtp(arg0: number) {
-    throw new Error('Method not implemented.');
+              this.notify.showSuccess(`${data.message}`, `Success`);
+              window.open('https://www.google.com/?authuser=0');
+            }
+          },
+          error: (error) => {
+            this._api.loopErrorMessages(error.error);
+          },
+          complete: () => {},
+        });
+    } else {
+      return;
+    }
   }
-  activetab: 1 | 2 | 3 | 4 | 5 | 6 | 7 = 1;
+
+  sentOtp(context: string, position: 1 | 2 | 3) {
+    let payload = {
+      username: this.loginresponse.username,
+      context: 'LOGIN',
+      channel: context,
+    };
+
+    if (this.loginForm.valid) {
+      this._api.post('authentication/send-code', payload).subscribe({
+        next: (data: any) => {
+          if (data) {
+            console.log('response....', data);
+            this.notify.showSuccess(`${data.message}`, `Success`);
+            this.activetab = position;
+          }
+        },
+        error: (error) => {
+          this._api.loopErrorMessages(error.error);
+        },
+        complete: () => {},
+      });
+    } else {
+      console.log('else block.....');
+    }
+  }
 
   updateActiveTab(position: 1 | 2 | 3 | 4 | 5 | 6) {
     this.activetab = position;
@@ -88,5 +136,8 @@ export class LoginComponent {
   }
   get f(): { [key: string]: AbstractControl } {
     return this._api.getFormControls(this.loginForm);
+  }
+  get f1(): { [key: string]: AbstractControl } {
+    return this._api.getFormControls(this.veryOtpForm);
   }
 }
