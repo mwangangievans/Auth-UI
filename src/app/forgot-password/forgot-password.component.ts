@@ -11,7 +11,11 @@ import {
 import { ApiService } from '../api.service';
 import { NotificationService } from '../notification.service';
 import { HttpClientModule } from '@angular/common/http';
-import { userLoginResponse, userregistrationResponse } from '../model';
+import {
+  ActiveTab,
+  userLoginResponse,
+  userregistrationResponse,
+} from '../model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -39,7 +43,7 @@ export class ForgotPasswordComponent {
   submitted1!: boolean;
   submitted3!: boolean;
   showPassword!: Boolean;
-  activetab: 1 | 2 | 3 | 4 | 5 | 6 = 4;
+  activetab: ActiveTab = 1;
   getUserDetails!: userregistrationResponse;
 
   ngOnInit() {
@@ -102,10 +106,10 @@ export class ForgotPasswordComponent {
       console.log('else block.....');
     }
   }
-  updateActiveTab(position: 1 | 2 | 3 | 4 | 5 | 6) {
+  updateActiveTab(position: ActiveTab) {
     this.activetab = position;
   }
-  getUserName(position: 1 | 2 | 3 | 4 | 5 | 6) {
+  getUserName(position: ActiveTab) {
     this.submitted = true;
     if (this.getUserNameForm.valid) {
       this._api
@@ -127,7 +131,7 @@ export class ForgotPasswordComponent {
       return;
     }
   }
-  veryOtp(position: 1 | 2 | 3 | 4 | 5 | 6) {
+  veryOtp(position: ActiveTab) {
     this.submitted3 = true;
     if (this.getUserNameForm.valid) {
       this._api
@@ -151,11 +155,11 @@ export class ForgotPasswordComponent {
       return;
     }
   }
-  resetPasswaord(position: 1 | 2 | 3 | 4 | 5 | 6 | 7) {
+  resetPasswaord(position: ActiveTab | 7) {
     this.submitted = true;
     if (this.forgetPassWordForm.valid) {
       this._api
-        .post('authentication/login', this.forgetPassWordForm.value)
+        .post('authentication/set-password', this.forgetPassWordForm.value)
         .subscribe({
           next: (data: any) => {
             if (data) {

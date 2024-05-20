@@ -39,11 +39,14 @@ export class LoginComponent {
   activetab: 1 | 2 | 3 | 4 | 5 | 6 | 7 = 1;
 
   constructor(
-    private _api: ApiService,
+    public _api: ApiService,
     private _formBuilder: FormBuilder,
     private notify: NotificationService,
     private router: Router
-  ) {}
+  ) {
+    let emailValue = this._api.maskPhoneNumber('07982884');
+    console.log({ emailValue });
+  }
 
   ngOnInit() {
     this.loginForm = this._formBuilder.group({
@@ -80,7 +83,7 @@ export class LoginComponent {
   }
   veryOtp(position: 1 | 2 | 3 | 4 | 5 | 6 | 7) {
     this.submitted1 = true;
-    if (this.loginForm.valid) {
+    if (this.veryOtpForm.valid) {
       this._api
         .post('authentication/verify-code', this.veryOtpForm.value)
         .subscribe({

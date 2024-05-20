@@ -29,7 +29,7 @@ import { userregistrationResponse } from '../model';
   ],
 })
 export class RegisterFormComponent {
-  activetab: 1 | 2 | 3 | 4 | 5 | 6 | 7 = 3;
+  activetab: 1 | 2 | 3 | 4 | 5 | 6 | 7 = 1;
   registerForm!: FormGroup;
   veryOtpForm!: FormGroup;
   submitted!: boolean;

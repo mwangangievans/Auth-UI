@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { RegisterComponent } from './register/register.component';
@@ -14,6 +14,7 @@ import { LoaderComponent } from './loader/loader.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   imports: [
+    RouterModule,
     RouterOutlet,
     LoginComponent,
     CommonModule,
