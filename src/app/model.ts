@@ -11,3 +11,11 @@ export interface userregistrationResponse {
   phone_number: string;
   email: string;
 }
+
+export interface userLoginResponse {
+  message: [string];
+  username: string;
+  phone_number: string;
+  email: string;
+}
+export type ActiveTab = 1 | 2 | 3 | 4 | 5 | 6;

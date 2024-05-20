@@ -347,40 +347,49 @@
             <div *ngIf="activetab === 3" class="max-w-md mx-auto w-full px-6 3xs:px-10 sm:px-0">
                 <div class="mt-10 max-w-md w-full flex flex-col items-center justify-center">
                     <div class="w-full">
-                        <form method="post" class="space-y-6">
-                            <div>
-                                <div class="mt-1">
-                                    <div>
-                                        <label fullname="" for="otp_otp"
-                                            class="user_dialog_label block text-sm font-medium text-[#d1d5db]"
-                                            tabindex="0">
-                                            Enter the OTP sent to <span
-                                                class="text-primary_color">{{registerForm.value.phone_number}}</span> or
-                                            <br />
-                                            <span class="text-primary_color">{{registerForm.value.email}}</span>
+                        <form [formGroup]="veryOtpForm" (ngSubmit)="veryOtp(2)" class="space-y-6">
+                            <div class="mt-1">
+                                <div>
+                                    <label fullname="" for="otp_otp"
+                                        class="user_dialog_label block text-sm font-medium text-[#d1d5db]" tabindex="0">
+                                        Enter the OTP sent to <span
+                                            class="text-primary_color">{{registerForm.value.phone_number}}</span> or
+                                        <br />
+                                        <span class="text-primary_color">{{registerForm.value.email}}</span>
 
-                                        </label>
-                                        <div class="mt-2">
-                                            <input type="email" id="email"
-                                                class="bg-gray-50 border border-gray-300 text-[#d1d5db] text-sm rounded-lg focus:ring-primary_color focus:border-primary_color block w-full p-2.5 dark:bg-[#d1d5db] dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary_color dark:focus:border-primary_color"
-                                                placeholder="" required />
-                                        </div>
+                                    </label>
+                                    <div class="mt-1">
+                                        <input type="text" formControlName="code" [ngClass]="{
+                                        'input_error bg-red-50  w-full  placeholder-red-700':
+                                            f1['code'].invalid &&
+                                            (f1['code'].touched || f1['code'].dirty),
+                                        'input_success  focus:ring-green-500 focus:border-green-500':
+                                            f1['code'].valid,
+                                        'input_default focus:ring-bg-primary_color focus:border-ring-primary_color':
+                                            f1['code'].pristine
+                                        }" placeholder="" />
                                     </div>
                                 </div>
-                                <p class="text-xs mt-2">
-                                    Didn’t receive OTP?
-                                    <a fullname="Didn’t receive OTP? Click to Resend" (click)="resentOtp(3)"
-                                        class="font-medium text-linkColor cursor-pointer hover:text-linkColor">
-                                        Resend
-                                    </a>
+                                <p *ngIf="submitted1 && f1['code'].errors"
+                                    class="flex gap-3 mt-3 text-sm leading-6 phx-no-feedback:hidden text-rose-600">
+                                    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                                        class="mt-0.5 h-5 w-5 flex-none fill-rose-500" fill="currentColor"
+                                        viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-5a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0v-4.5A.75.75 0 0110 5zm0 10a1 1 0 100-2 1 1 0 000 2z"
+                                            clip-rule="evenodd"></path>
+
+                                    </svg>
+                                    <span *ngIf="submitted1 && f1['code'].errors['required']">can't be
+                                        blank</span>
+
+
                                 </p>
-
-
                             </div>
 
                             <div class="flex justify-end">
                                 <div class="flex space-x-2">
-                                    <a (click)="updateActiveTab(1)" class="btn px-8 btn-outline rounded-full"
+                                    <a (click)="updateActiveTab(2)" class="btn px-8 btn-outline rounded-full"
                                         fullname="Navigate to the next section">
                                         Back
                                     </a>

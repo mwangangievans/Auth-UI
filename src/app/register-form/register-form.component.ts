@@ -31,10 +31,12 @@ import { userregistrationResponse } from '../model';
 export class RegisterFormComponent {
   activetab: 1 | 2 | 3 | 4 | 5 | 6 | 7 = 1;
   registerForm!: FormGroup;
+  veryOtpForm!: FormGroup;
   submitted!: boolean;
   showPassword!: boolean;
   isDialogOpen!: boolean;
   registrationresponse!: userregistrationResponse;
+  submitted1!: boolean;
 
   updateActiveTab(position: 1 | 2 | 3 | 4 | 5 | 6) {
     this.activetab = position;
@@ -56,6 +58,35 @@ export class RegisterFormComponent {
       fullname: ['', Validators.required],
       password: ['', Validators.required],
     });
+
+    this.veryOtpForm = this._formBuilder.group({
+      code: ['', Validators.required],
+      context: 'REGISTRATION',
+    });
+  }
+  veryOtp(position: 1 | 2 | 3 | 4 | 5 | 6 | 7) {
+    this.submitted1 = true;
+    if (this.registerForm.valid) {
+      this._api
+        .post('authentication/verify-code', this.veryOtpForm.value)
+        .subscribe({
+          next: (data: any) => {
+            if (data) {
+              console.log('otp verify.....', data);
+
+              this.notify.showSuccess(`${data.message}`, `Success`);
+
+              this.activetab = position;
+            }
+          },
+          error: (error) => {
+            this._api.loopErrorMessages(error.error);
+          },
+          complete: () => {},
+        });
+    } else {
+      return;
+    }
   }
 
   register(position: 1 | 2 | 3 | 4 | 5 | 6 | 7) {
@@ -84,6 +115,9 @@ export class RegisterFormComponent {
   get f(): { [key: string]: AbstractControl } {
     return this._api.getFormControls(this.registerForm);
   }
+  get f1(): { [key: string]: AbstractControl } {
+    return this._api.getFormControls(this.veryOtpForm);
+  }
 
   sentOtp(context: string, position: 1 | 2 | 3) {
     console.log({ context });
@@ -101,6 +135,7 @@ export class RegisterFormComponent {
           if (data) {
             console.log('response....', data);
             this.notify.showSuccess(`${data.message}`, `Success`);
+            this.activetab = position;
           }
         },
         error: (error) => {
@@ -113,30 +148,6 @@ export class RegisterFormComponent {
     }
   }
 
-  resentOtp(position: 1 | 2 | 3 | 4 | 5 | 6 | 7) {
-    this.activetab = position;
-    // let payload = {
-    //   username: this.registerForm.value.phone_number,
-    //   context: 'REGISTRATION',
-    // };
-    // if (this.registerForm.valid) {
-    //   this._api.post('authentication/send-code', payload).subscribe({
-    //     next: (data: any) => {
-    //       if (data) {
-    //         console.log('response....', data);
-
-    //         this.notify.showSuccess(`${data.error?.detail}`, `Success`);
-    //       }
-    //     },
-    //     error: (error) => {
-    //       this._api.loopErrorMessages(error.error);
-    //     },
-    //     complete: () => {},
-    //   });
-    // } else {
-    //   return;
-    // }
-  }
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
   }

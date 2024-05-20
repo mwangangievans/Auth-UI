@@ -57,4 +57,36 @@ export class ApiService {
         : { invalidKenyanPhoneNumber: { value: control.value } };
     };
   }
+
+  maskPhoneNumber(phoneNumber: string) {
+    const visibleStart = '+254';
+    const visibleEnd = phoneNumber.slice(-3);
+    const maskedMiddle = '*'.repeat(
+      phoneNumber.length - visibleStart.length - visibleEnd.length
+    );
+
+    const maskedPhoneNumber = visibleStart + maskedMiddle + visibleEnd;
+
+    return maskedPhoneNumber;
+  }
+  maskEmailAddress(email: string) {
+    // Split the email into the local part and the domain part
+    const [localPart, domain] = email.split('@');
+
+    // No need to mask if the local part has two characters or less
+    if (localPart.length <= 2) {
+      return email;
+    }
+
+    // Keep the first character, mask the middle characters, and keep the last character
+    const firstChar = localPart[0];
+    const lastChar = localPart[localPart.length - 1];
+    const maskedChars = '*'.repeat(localPart.length - 2);
+
+    // Combine the masked local part with the domain
+    const maskedLocalPart = `${firstChar}${maskedChars}${lastChar}`;
+    const maskedEmail = `${maskedLocalPart}@${domain}`;
+
+    return maskedEmail;
+  }
 }
