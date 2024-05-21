@@ -12,7 +12,7 @@ import { ApiService } from '../api.service';
 import { NotificationService } from '../notification.service';
 import { HttpClientModule } from '@angular/common/http';
 import { userLoginResponse } from '../model';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +24,9 @@ import { Router } from '@angular/router';
     ReactiveFormsModule,
     FormsModule,
     CommonModule,
+    RouterModule,
   ],
+
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })

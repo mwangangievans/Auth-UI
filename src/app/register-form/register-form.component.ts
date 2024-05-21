@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoaderComponent } from '../loader/loader.component';
 import { userregistrationResponse } from '../model';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-register-form',
@@ -26,6 +27,7 @@ import { userregistrationResponse } from '../model';
     FormsModule,
     CommonModule,
     LoaderComponent,
+    RouterModule,
   ],
 })
 export class RegisterFormComponent {

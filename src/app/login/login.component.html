@@ -5,7 +5,7 @@
 
 
                 <div class="flex flex-col items-center justify-center w-full mx-auto max-w-sm lg:w-96">
-                    <a href="/en/" data-phx-link="redirect" data-phx-link-state="push" title="Go to homepage">
+                    <a href="/en/" title="Go to homepage">
                         <div class="flex-shrink-0 w-full">
                             <img class="mx-auto w-auto h-14 block" src="/assets/kimi-pay_no_bg.png" alt="KimiPay logo">
                         </div>
@@ -50,7 +50,7 @@
                                             </div>
                                         </div>
                                         <p *ngIf="submitted && f['username'].errors"
-                                            class="flex gap-3 mt-3 text-sm leading-6 phx-no-feedback:hidden text-rose-600">
+                                            class="flex gap-3 mt-3 text-sm leading-6 text-rose-600">
                                             <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
                                                 class="mt-0.5 h-5 w-5 flex-none fill-rose-500" fill="currentColor"
                                                 viewBox="0 0 20 20">
@@ -87,7 +87,7 @@
                                         </button>
                                     </div>
                                     <p *ngIf="submitted && f['password'].errors"
-                                        class="flex gap-3 mt-3 text-sm leading-6 phx-no-feedback:hidden text-rose-600">
+                                        class="flex gap-3 mt-3 text-sm leading-6 text-rose-600">
                                         <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
                                             class="mt-0.5 h-5 w-5 flex-none fill-rose-500" fill="currentColor"
                                             viewBox="0 0 20 20">
@@ -113,7 +113,7 @@
                                         </label>
                                     </div>
                                     <div class="py-2 2xs:py-0 text-center 2xs:text-left cursor-pointer">
-                                        <a href="forget-password"
+                                        <a routerLink="/forget-password"
                                             class="text-sm text-linkColor font-semibold hover:underline"
                                             title="Navigate to password reset page">
                                             Forgot Password
@@ -143,7 +143,7 @@
                     </div>
                     <div class="mt-6 flex items-center justify-center gap-6">
                         <!-- Sign in with Digital ID -->
-                        <button type="button" phx-click="qr_login_method"
+                        <button type="button"
                             class="inline-flex items-center btn text-gray-700 bg-lightGreen rounded-3xl">
                             <span class="p-1 inline-flex justify-center items-center  rounded-full h-6 w-6">
                                 <img src="/assets/Google__G__logo.svg.png" alt="">
@@ -375,7 +375,7 @@
                             </div>
                         </div>
                         <p *ngIf="submitted1 && f1['code'].errors"
-                            class="flex gap-3 mt-3 text-sm leading-6 phx-no-feedback:hidden text-rose-600">
+                            class="flex gap-3 mt-3 text-sm leading-6  text-rose-600">
                             <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
                                 class="mt-0.5 h-5 w-5 flex-none fill-rose-500" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd"

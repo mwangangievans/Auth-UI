@@ -3,13 +3,11 @@
         class="absolute z-[100] opacity-0 -left-[999px] focus:-left-[0px] focus:opacity-100 inline-block rounded-none bg-white px-5 py-2.5 text-sm font-medium text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
         Skip to main content
     </a>
-    <header id="e" phx-update="ignore" class="border-b border-gray-200" x-data="{headerOpen: false}"
-        x-on:click.away="headerOpen = false">
+    <header id="e" class="border-b border-gray-200" x-data="{headerOpen: false}" x-on:click.away="headerOpen = false">
         <nav class="mx-auto flex max-w-screen-2xl items-center justify-between gap-x-6 py-4 px-6 sm:px-8 lg:py-5"
             aria-label="Global">
             <div class="flex items-center overflow-hidden w-full">
-                <a href="/en/" data-phx-link="redirect" data-phx-link-state="push"
-                    class="flex-none flex-shrink-0 block p-1 rounded-lg focus:ring-2 focus:outline-none"
+                <a href="/en/" class="flex-none flex-shrink-0 block p-1 rounded-lg focus:ring-2 focus:outline-none"
                     title="Go to the homepage">
                     <span class="sr-only">KimiPay</span>
                     <img class="hidden xs:block w-auto h-8 2xs:h-12 xl:h-14" src="/assets/kimi-pay_no_bg.png"
@@ -29,7 +27,7 @@
 
 
 
-    <main class="flex-1 flex flex-col min-h-full w-full " id="main-content" phx-hook="accessibility">
+    <main class="flex-1 flex flex-col min-h-full w-full " id="main-content">
 
         <div class="flex-1 min-h-full sm:flex sm:flex-col sm:justify-start sm:items-center">
             <div class="p-4 max-w-sm mx-auto w-full sm:p-0 mt-20">
@@ -46,7 +44,7 @@
                     <form class="space-y-6 w-full" id="otp-form">
                         <div>
                             <div class="mt-1">
-                                <div phx-feedback-for="otp[otp]" class="phx-no-feedback">
+                                <div>
                                     <label title="" for="otp-form_otp"
                                         class="user_dialog_label  block text-sm font-medium text-gray-700" tabindex="0">
 
@@ -111,7 +109,6 @@
                                         <div class="mt-6 text-center">
                                             Didn’t receive OTP?
                                             <a title="Didn’t receive OTP? Click to Resend" href="#"
-                                                phx-click="resend_otp" phx-throttle="2000"
                                                 class="font-medium text-linkColor hover:text-linkColor">
                                                 Resend
                                             </a>

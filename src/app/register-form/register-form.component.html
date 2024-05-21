@@ -28,7 +28,7 @@
                 <!-- Progress Steps -->
                 <div class="mt-10 mb-5">
                     <nav aria-label="Progress" class="flex justify-center">
-                        <ol role="list" class="flex items-center pb-5">
+                        <ol role="list" class="flex items-center pb-5 ">
                             <li class="relative pr-12 sm:pr-24">
                                 <!-- Current Step -->
                                 <div class="absolute inset-0 flex items-center" aria-hidden="true">
@@ -45,7 +45,7 @@
                                 </div>
                             </li>
 
-                            <li class="relative pr-12 sm:pr-24">
+                            <li class="relative pr-12 sm:pr-24 ">
                                 <!-- Upcoming Step -->
                                 <div class="absolute inset-0 flex items-center" aria-hidden="true">
                                     <div class="h-0.5 w-full bg-gray-200"></div>
@@ -62,8 +62,7 @@
                                 </div>
                             </li>
 
-                            <li class="relative pr-12 sm:pr-24">
-                                <!-- Upcoming Step -->
+                            <li class="relative">
                                 <div class="absolute inset-0 flex items-center" aria-hidden="true">
                                     <div class="h-0.5 w-full bg-gray-200"></div>
                                 </div>
@@ -74,13 +73,12 @@
                                         aria-hidden="true">
                                     </span>
                                     <span class="absolute text-xs xs:text-sm font-medium -bottom-6 whitespace-nowrap">
-                                        Password
+                                        Done
                                     </span>
                                 </div>
                             </li>
 
-                            <li class="relative">
-                                <!-- Upcoming Step -->
+                            <!-- <li class="relative">
                                 <div class="absolute inset-0 flex items-center" aria-hidden="true">
                                     <div class="h-0.5 w-full bg-gray-200"></div>
                                 </div>
@@ -94,7 +92,7 @@
                                         Photo
                                     </span>
                                 </div>
-                            </li>
+                            </li>  -->
                         </ol>
                     </nav>
                 </div>
@@ -127,7 +125,7 @@
                                         </div>
                                     </div>
                                     <p *ngIf="submitted && f['fullname'].errors"
-                                        class="flex gap-3 mt-3 text-sm leading-6 phx-no-feedback:hidden text-rose-600">
+                                        class="flex gap-3 mt-3 text-sm leading-6  text-rose-600">
                                         <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
                                             class="mt-0.5 h-5 w-5 flex-none fill-rose-500" fill="currentColor"
                                             viewBox="0 0 20 20">
@@ -160,7 +158,7 @@
                                         </div>
                                     </div>
                                     <p *ngIf="submitted && f['phone_number'].errors"
-                                        class="flex gap-3 mt-3 text-sm leading-6 phx-no-feedback:hidden text-rose-600">
+                                        class="flex gap-3 mt-3 text-sm leading-6  text-rose-600">
                                         <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
                                             class="mt-0.5 h-5 w-5 flex-none fill-rose-500" fill="currentColor"
                                             viewBox="0 0 20 20">
@@ -199,7 +197,7 @@
                                         </div>
                                     </div>
                                     <p *ngIf="submitted && f['email'].errors"
-                                        class="flex gap-3 mt-3 text-sm leading-6 phx-no-feedback:hidden text-rose-600">
+                                        class="flex gap-3 mt-3 text-sm leading-6  text-rose-600">
                                         <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
                                             class="mt-0.5 h-5 w-5 flex-none fill-rose-500" fill="currentColor"
                                             viewBox="0 0 20 20">
@@ -236,7 +234,7 @@
                                     </button>
                                 </div>
                                 <p *ngIf="submitted && f['password'].errors"
-                                    class="flex gap-3 mt-3 text-sm leading-6 phx-no-feedback:hidden text-rose-600">
+                                    class="flex gap-3 mt-3 text-sm leading-6 text-rose-600">
                                     <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
                                         class="mt-0.5 h-5 w-5 flex-none fill-rose-500" fill="currentColor"
                                         viewBox="0 0 20 20">
@@ -347,7 +345,7 @@
             <div *ngIf="activetab === 3" class="max-w-md mx-auto w-full px-6 3xs:px-10 sm:px-0">
                 <div class="mt-10 max-w-md w-full flex flex-col items-center justify-center">
                     <div class="w-full">
-                        <form [formGroup]="veryOtpForm" (ngSubmit)="veryOtp(2)" class="space-y-6">
+                        <form [formGroup]="veryOtpForm" (ngSubmit)="veryOtp(4)" class="space-y-6">
                             <div class="mt-1">
                                 <div>
                                     <label fullname="" for="otp_otp"
@@ -371,7 +369,7 @@
                                     </div>
                                 </div>
                                 <p *ngIf="submitted1 && f1['code'].errors"
-                                    class="flex gap-3 mt-3 text-sm leading-6 phx-no-feedback:hidden text-rose-600">
+                                    class="flex gap-3 mt-3 text-sm leading-6  text-rose-600">
                                     <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
                                         class="mt-0.5 h-5 w-5 flex-none fill-rose-500" fill="currentColor"
                                         viewBox="0 0 20 20">
@@ -473,25 +471,33 @@
                     <div class="w-full max-w-md">
                         <div
                             class="border border-gray-100 divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow">
-                            <div class="px-4 py-5 sm:p-6">
-                                <p class="text-sm font-medium text-gray-500">
-                                    MUINDE MWANGANGI
-                                </p>
-                                <span class="flex-grow">34552377</span>
+                            <div class="px-4 py-5 sm:p-6 my-12">
+                                <svg class=" group-hover:inline h-16 w-16 mx-auto text-primary_color"
+                                    viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd"
+                                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                                <p class="text-center">Your Now set Proceed To <button routerLink="/login"
+                                        class="font-medium text-linkColor hover:text-linkColor ml-2 items-end"
+                                        aria-label="Account details found of Full name ESTHER MUTAVE KALELI and Id number 41238546, if not your profile, click try again">
+                                        Login
+                                    </button></p>
+
                             </div>
-                            <div class="px-4 py-4 sm:px-6">
+                            <!-- <div class="px-4 py-4 sm:px-6">
                                 <p>
-                                    Not your profile?
-                                    <button (click)="updateActiveTab(1)"
+
+                                    <button routerLink="/login"
                                         class="font-medium text-linkColor hover:text-linkColor ml-2"
                                         aria-label="Account details found of Full name ESTHER MUTAVE KALELI and Id number 41238546, if not your profile, click try again">
-                                        Try again
+                                        Login
                                     </button>
                                 </p>
-                            </div>
+                            </div> -->
                         </div>
 
-                        <div class="flex justify-end mt-6">
+                        <!-- <div class="flex justify-end mt-6">
                             <div class="flex space-x-2">
                                 <a (click)="updateActiveTab(3)"
                                     class="flex justify-center rounded-full border border-transparent bg-primary_color py-2 px-6 font-medium text-white shadow-sm hover:bg-accentcolor-800 focus:outline-none focus:ring-2 focus:ring-accentcolor-500 focus:ring-offset-2"
@@ -499,7 +505,7 @@
                                     Next
                                 </a>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -566,19 +572,16 @@
 
             <div *ngIf="activetab === 6" class="max-w-md mx-auto w-full px-6 3xs:px-10 sm:px-0">
                 <div class="flex-1 w-full max-w-md min-h-full sm:flex sm:flex-col sm:items-center" id="override_image"
-                    phx-hook="imageCropper" arial-labelledby="Click to upload your profile photo">
-                    <form method="post" class="w-full space-y-6" phx-change="validate_register" phx-submit="register">
-                        <input id="phx-F864lj2lhE6a22AC" type="file" name="avatar" accept=".jpg,.jpeg,.png"
-                            data-phx-hook="Phoenix.LiveFileUpload" data-phx-update="ignore"
-                            data-phx-upload-ref="phx-F864lj2lhE6a22AC" data-phx-active-refs="" data-phx-done-refs=""
-                            data-phx-preflighted-refs="" class="hidden" />
+                    arial-labelledby="Click to upload your profile photo">
+                    <form method="post" class="w-full space-y-6">
+                        <input type="file" name="avatar" accept=".jpg,.jpeg,.png" class="hidden" />
                         <!-- upload img -->
                         <div id="upload-passport-photo" aria-label="Upload your passport photo">
                             <label for="cover-photo" class="block text-lg font-medium text-[#d1d5db] required">
                                 Upload your passport photo
                             </label>
 
-                            <div id="cropperjs_section" phx-update="ignore">
+                            <div id="cropperjs_section">
                                 <img id="image" alt="image" />
 
                                 <div class="mt-4 flex items-center justify-center">
@@ -694,15 +697,14 @@
                         </div>
 
                         <div class="flex items-center">
-                            <label phx-feedback-for="avatar[terms]" fullname=""
-                                class="flex items-center gap-4 user_dialog_label phx-no-feedback">
+                            <label fullname="" class="flex items-center gap-4 user_dialog_label ">
                                 <input type="hidden" name="avatar[terms]" value="false" />
                                 <input id="push-email" name="push-notifications" type="checkbox"
                                     class="h-4 w-4 rounded border-gray-300 text-primary_color focus:ring-pritext-primary_color" />
                             </label>
                             <label for="avatar_terms" class="block ml-2 text-sm text-[#d1d5db]">
                                 I agree to the
-                                <a href="/terms-and-conditions" data-phx-link="redirect" data-phx-link-state="push"
+                                <a href="/terms-and-conditions"
                                     class="font-medium text-navcolor-700 hover:text-navcolor-800" target="_blank"
                                     fullname="Read Terms and Conditions">
                                     terms and conditions.
