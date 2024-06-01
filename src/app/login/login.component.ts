@@ -75,6 +75,14 @@ export class LoginComponent {
           }
         },
         error: (error) => {
+          //check if account is verified and navigate to registration page to verify
+          // if ((error[key][0] = 'Your account is not verified')) {
+          //   let activeTab = 2;
+          //   localStorage.setItem('activeTab', activeTab.toString());
+          //   this.router.navigate(['/register-form']);
+          // }
+
+          // console.log('hello.....', error[key][0]);
           this._api.loopErrorMessages(error.error);
         },
         complete: () => {},

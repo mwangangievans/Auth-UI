@@ -7,10 +7,12 @@ import { AbstractControl, FormGroup, ValidatorFn } from '@angular/forms';
 import { NotificationService } from './notification.service';
 
 const baseUrl = 'http://api-auth.kimipay.com/';
+// const baseUrl = 'https://13c5-41-81-154-192.ngrok-free.app/';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
   constructor(
+    private router: Router,
     private location: Location,
     private http: HttpClient,
     private notify: NotificationService

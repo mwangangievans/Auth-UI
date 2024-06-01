@@ -14,7 +14,6 @@ export class NotificationService {
       pauseOnHover: true,
       position: 'center-top',
       showOnlyTheLastOne: true,
-      backOverlay: true,
       timeout: 5000,
     });
   }
@@ -25,9 +24,8 @@ export class NotificationService {
     Notify.failure(`${message}` ?? `${title}`, {
       width: '500px',
       pauseOnHover: true,
-      position: 'right-top',
+      position: 'center-top',
       showOnlyTheLastOne: true,
-      backOverlay: true,
       timeout: 3000,
     });
   }

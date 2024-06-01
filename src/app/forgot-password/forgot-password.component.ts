@@ -84,9 +84,9 @@ export class ForgotPasswordComponent {
 
   sentOtp(context: string, position: 1 | 2 | 3) {
     let payload = {
-      username: this.getUserDetails.username,
-      context: 'LOGIN',
-      channel: context,
+      username: this.getUserNameForm.value.email,
+      context: context,
+      channel: 'EMAIL',
     };
     if (this.getUserNameForm.valid) {
       this._api.post('authentication/send-code', payload).subscribe({
@@ -155,7 +155,7 @@ export class ForgotPasswordComponent {
       return;
     }
   }
-  resetPasswaord(position: ActiveTab | 7) {
+  resetPasswaord() {
     this.submitted = true;
     if (this.forgetPassWordForm.valid) {
       this._api
@@ -164,6 +164,7 @@ export class ForgotPasswordComponent {
           next: (data: any) => {
             if (data) {
               this.notify.showSuccess(`${data.message}`, `Success`);
+              this.router.navigate(['/login']);
             }
           },
           error: (error) => {
